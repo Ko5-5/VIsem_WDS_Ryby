@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT += core
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RyBy
@@ -25,10 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    settings.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    settings.h
 
 FORMS += \
         mainwindow.ui
+

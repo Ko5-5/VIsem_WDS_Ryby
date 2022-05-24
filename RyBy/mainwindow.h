@@ -14,6 +14,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    int sounD;
+
 
 private slots:
     void on_PlayButton_clicked();
@@ -25,6 +27,8 @@ private slots:
     void on_SettingsToMenuButton_clicked();
 
     void on_GameToMenuButton_clicked();
+
+    void on_BrightnessSlider_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
