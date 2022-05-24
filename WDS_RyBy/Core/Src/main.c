@@ -160,6 +160,8 @@ int main(void)
 		zyroskop[0] = MPU6050.Gy;
 		zyroskop[0] = MPU6050.Gz;
 		MessageLength = sprintf(DataToSend, "W %d %d %d %d %d %d %d %d %d %d %d %d \n\r", akcelerometr[0], akcelerometr[1], akcelerometr[2], zyroskop[0], zyroskop[0], zyroskop[0], przyciski[0], przyciski[1], Joystick[0], Joystick[1], JoyBut, count);
+		uint16_t crc = HAL_CRC_Accumulate(&hcrc, (uint32_t*)DataToSend, sizeof(DataToSend)/(sizeof(uint32_t)));
+		MessageLength = sprintf(DataToSend, "W %d %d %d %d %d %d %d %d %d %d %d %d %d \n\r", akcelerometr[0], akcelerometr[1], akcelerometr[2], zyroskop[0], zyroskop[0], zyroskop[0], przyciski[0], przyciski[1], Joystick[0], Joystick[1], JoyBut, count, crc);
 		CDC_Transmit_FS(DataToSend, MessageLength);
 		przyciski[0] = 0;
 		przyciski[1] = 0;
