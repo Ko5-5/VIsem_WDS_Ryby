@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>fishing_background.png</file>
+        <file>casualFishing.png</file>
+        <file>lawaFishing.png</file>
+        <file>szarlotkaFishing.png</file>
+        <file>palmaFishing.png</file>
+        <file>fishing_bcg.png</file>
+    </qresource>
+</RCC>

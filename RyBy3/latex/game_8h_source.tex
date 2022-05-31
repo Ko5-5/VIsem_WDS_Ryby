@@ -1,0 +1,63 @@
+\hypertarget{game_8h_source}{}\doxysection{game.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef GAME\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define GAME\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QGraphicsView>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QObject>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QGraphicsScene>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <QGraphicsProxyWidget>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <QGraphicsGridLayout>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <QGraphicsWidget>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QImage>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QBrush>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <QPixmap>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <QPainter>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}settings.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}key\_press\_event\_filter.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{classGame}{Game}} : \textcolor{keyword}{public} QGraphicsView}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     Q\_OBJECT}
+\DoxyCodeLine{30 \textcolor{keyword}{public}:}
+\DoxyCodeLine{37     \mbox{\hyperlink{classGame_ae3c64a8dd73de0a99849db8ec0e9a86c}{Game}}(QWidget * parent = 0);}
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \mbox{\hyperlink{classGame}{\string~Game}}() \{\};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43     QGraphicsScene * \mbox{\hyperlink{classGame_aa8a479590fe64e76e1ffe96ca8a8d81b}{frontScene}};}
+\DoxyCodeLine{47     QGraphicsScene * \mbox{\hyperlink{classGame_a3dcb60b1ecbff13b6d3287f1e1959387}{menuScene}};}
+\DoxyCodeLine{51     QGraphicsScene * \mbox{\hyperlink{classGame_a5c803009d5db6749db34319e9b5a4a70}{gameScene}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56     QPushButton * \mbox{\hyperlink{classGame_ab8714b1ef873f6eac2530e5c958eb9f7}{startGameButton}};}
+\DoxyCodeLine{60     QPushButton * \mbox{\hyperlink{classGame_aa2e477186a3a34a82c82e991df4f3222}{settingsButton}};}
+\DoxyCodeLine{64     QPushButton * \mbox{\hyperlink{classGame_ad68061216e5fcde4e7abc636e7ec4917}{backToFrontButton}};}
+\DoxyCodeLine{68     QPushButton * \mbox{\hyperlink{classGame_a85bff5e678e4a43108f4a22033ef0ca9}{exitButton}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73     QLabel * \mbox{\hyperlink{classGame_a5c7568c50d428e1d29a42aab2fc0c82b}{titleLabel}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{78     \mbox{\hyperlink{classSettings}{Settings}} * \mbox{\hyperlink{classGame_a5851114343251741a5c0c72545ec81df}{settings}};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{83     QImage * \mbox{\hyperlink{classGame_afabac444e879cc3ca703ad70218ab0c6}{currentSceneImage}};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{88     QImage * \mbox{\hyperlink{classGame_a62df2969b41fa8d03a5c60c4ee6d9c39}{fishingBackground}};}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{93     QImage * \mbox{\hyperlink{classGame_af1c276b1e9de74c07240740b55f8c6b5}{casualFishing}};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{98     QImage * \mbox{\hyperlink{classGame_adf7dba5798d16fc0ae4892242ce1110d}{szarlotkaFishing}};}
+\DoxyCodeLine{102     QImage * \mbox{\hyperlink{classGame_ae78be616afc4dbcdfdde06d97400f4e8}{palmaFishing}};}
+\DoxyCodeLine{106     QImage * \mbox{\hyperlink{classGame_a8161af545103e66073bc1706a2edf971}{lawaFishing}};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{115     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGame_a78423f830a1f34a2244f4e349cd3fc01}{drawBackground}}(QPainter *painter, \textcolor{keyword}{const} QRectF \&rect) \textcolor{keyword}{override};}
+\DoxyCodeLine{116 \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{122     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGame_aa7225334b38220871df5efdd23f2a306}{setFrontScene}}();}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGame_a444a9b5a101c6baf549710257de35cfb}{setMenuScene}}();}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{136     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGame_aee7844b33fcff16d77e9f5a97b5aa0a9}{setGameScene}}();}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \};}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// GAME\_H}}
+
+\end{DoxyCode}

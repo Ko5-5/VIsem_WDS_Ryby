@@ -1,0 +1,155 @@
+\hypertarget{classGame}{}\doxysection{Game Class Reference}
+\label{classGame}\index{Game@{Game}}
+
+
+The \mbox{\hyperlink{classGame}{Game}} class.  
+
+
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+Inheritance diagram for Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGame}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGame_aa7225334b38220871df5efdd23f2a306}{set\+Front\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em set\+Front\+Scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a444a9b5a101c6baf549710257de35cfb}{set\+Menu\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em set\+Menu\+Scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_aee7844b33fcff16d77e9f5a97b5aa0a9}{set\+Game\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em set\+Game\+Scene \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGame_ae3c64a8dd73de0a99849db8ec0e9a86c}{Game}} (QWidget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \mbox{\hyperlink{classGame}{Game}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGame_a78423f830a1f34a2244f4e349cd3fc01}{draw\+Background}} (QPainter $\ast$painter, const QRectF \&rect) override
+\begin{DoxyCompactList}\small\item\em draw\+Background \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGame_aa8a479590fe64e76e1ffe96ca8a8d81b}\label{classGame_aa8a479590fe64e76e1ffe96ca8a8d81b}} 
+QGraphics\+Scene $\ast$ {\bfseries front\+Scene}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na scenę frontową \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a3dcb60b1ecbff13b6d3287f1e1959387}\label{classGame_a3dcb60b1ecbff13b6d3287f1e1959387}} 
+QGraphics\+Scene $\ast$ {\bfseries menu\+Scene}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na scenę ustawień \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a5c803009d5db6749db34319e9b5a4a70}\label{classGame_a5c803009d5db6749db34319e9b5a4a70}} 
+QGraphics\+Scene $\ast$ {\bfseries game\+Scene}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na scenę gry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_ab8714b1ef873f6eac2530e5c958eb9f7}\label{classGame_ab8714b1ef873f6eac2530e5c958eb9f7}} 
+QPush\+Button $\ast$ {\bfseries start\+Game\+Button}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na przycisk rozpoczynający grę \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_aa2e477186a3a34a82c82e991df4f3222}\label{classGame_aa2e477186a3a34a82c82e991df4f3222}} 
+QPush\+Button $\ast$ {\bfseries settings\+Button}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na przycisk przenoszący do ustawień \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_ad68061216e5fcde4e7abc636e7ec4917}\label{classGame_ad68061216e5fcde4e7abc636e7ec4917}} 
+QPush\+Button $\ast$ {\bfseries back\+To\+Front\+Button}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na przycisk powrotu do menu startowego. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a85bff5e678e4a43108f4a22033ef0ca9}\label{classGame_a85bff5e678e4a43108f4a22033ef0ca9}} 
+QPush\+Button $\ast$ {\bfseries exit\+Button}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na przycisk wyjścia z gry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a5c7568c50d428e1d29a42aab2fc0c82b}\label{classGame_a5c7568c50d428e1d29a42aab2fc0c82b}} 
+QLabel $\ast$ {\bfseries title\+Label}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na tytuł gry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a5851114343251741a5c0c72545ec81df}\label{classGame_a5851114343251741a5c0c72545ec81df}} 
+\mbox{\hyperlink{classSettings}{Settings}} $\ast$ {\bfseries settings}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obiekt settings, odpowiedzialny za ustawienia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_afabac444e879cc3ca703ad70218ab0c6}\label{classGame_afabac444e879cc3ca703ad70218ab0c6}} 
+QImage $\ast$ {\bfseries current\+Scene\+Image}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obraz aktualnie wyświetlany. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a62df2969b41fa8d03a5c60c4ee6d9c39}\label{classGame_a62df2969b41fa8d03a5c60c4ee6d9c39}} 
+QImage $\ast$ {\bfseries fishing\+Background}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obraz tła. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_af1c276b1e9de74c07240740b55f8c6b5}\label{classGame_af1c276b1e9de74c07240740b55f8c6b5}} 
+QImage $\ast$ {\bfseries casual\+Fishing}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obraz zwykłej mapy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_adf7dba5798d16fc0ae4892242ce1110d}\label{classGame_adf7dba5798d16fc0ae4892242ce1110d}} 
+QImage $\ast$ {\bfseries szarlotka\+Fishing}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obraz mapy szarlotka. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_ae78be616afc4dbcdfdde06d97400f4e8}\label{classGame_ae78be616afc4dbcdfdde06d97400f4e8}} 
+QImage $\ast$ {\bfseries palma\+Fishing}
+\begin{DoxyCompactList}\small\item\em Wskaźnik na obraz mapy palma. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGame_a8161af545103e66073bc1706a2edf971}\label{classGame_a8161af545103e66073bc1706a2edf971}} 
+QImage $\ast$ {\bfseries lawa\+Fishing}
+\begin{DoxyCompactList}\small\item\em Wskażnik na obraz mapy lawa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classGame}{Game}} class. 
+
+Klasa \mbox{\hyperlink{classGame_ae3c64a8dd73de0a99849db8ec0e9a86c}{Game()}} dziedziczy z klasy QGraphics\+View, służy do wyświetlania elementów na ekranie, a także przechowuje wskaźniki do tych elementów. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGame_ae3c64a8dd73de0a99849db8ec0e9a86c}\label{classGame_ae3c64a8dd73de0a99849db8ec0e9a86c}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Konstruktor klasy \mbox{\hyperlink{classGame}{Game}}. 
+
+Tworzy instancje wszystkich obiektów znajdujących się na ekranie i wyświetla je. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGame_a78423f830a1f34a2244f4e349cd3fc01}\label{classGame_a78423f830a1f34a2244f4e349cd3fc01}} 
+\index{Game@{Game}!drawBackground@{drawBackground}}
+\index{drawBackground@{drawBackground}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawBackground()}{drawBackground()}}
+{\footnotesize\ttfamily void Game\+::draw\+Background (\begin{DoxyParamCaption}\item[{QPainter $\ast$}]{painter,  }\item[{const QRectF \&}]{rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+draw\+Background 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & \\
+\hline
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+Reimplementacja funkcji służącej do rysowania tła, w celu dostosowania jej do tej gry \mbox{\Hypertarget{classGame_aa7225334b38220871df5efdd23f2a306}\label{classGame_aa7225334b38220871df5efdd23f2a306}} 
+\index{Game@{Game}!setFrontScene@{setFrontScene}}
+\index{setFrontScene@{setFrontScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setFrontScene}{setFrontScene}}
+{\footnotesize\ttfamily void Game\+::set\+Front\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+set\+Front\+Scene 
+
+Slot gry, pozwalający na zmianę sceny na scenę frontową \mbox{\Hypertarget{classGame_aee7844b33fcff16d77e9f5a97b5aa0a9}\label{classGame_aee7844b33fcff16d77e9f5a97b5aa0a9}} 
+\index{Game@{Game}!setGameScene@{setGameScene}}
+\index{setGameScene@{setGameScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setGameScene}{setGameScene}}
+{\footnotesize\ttfamily void Game\+::set\+Game\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+set\+Game\+Scene 
+
+Slot gry, pozwalający na zmianę sceny na scenę gry \mbox{\Hypertarget{classGame_a444a9b5a101c6baf549710257de35cfb}\label{classGame_a444a9b5a101c6baf549710257de35cfb}} 
+\index{Game@{Game}!setMenuScene@{setMenuScene}}
+\index{setMenuScene@{setMenuScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setMenuScene}{setMenuScene}}
+{\footnotesize\ttfamily void Game\+::set\+Menu\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+set\+Menu\+Scene 
+
+Slot gry, pozwalający na zmianę sceny na scenę ustawień 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game.\+h\item 
+game.\+cpp\end{DoxyCompactItemize}

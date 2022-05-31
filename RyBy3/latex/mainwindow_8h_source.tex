@@ -1,0 +1,44 @@
+\hypertarget{mainwindow_8h_source}{}\doxysection{mainwindow.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MAINWINDOW\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MAINWINDOW\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}player.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}statusbar.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QMainWindow>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <QGraphicsView>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <QGraphicsScene>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classMainWindow}{MainWindow}};}
+\DoxyCodeLine{12 \}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classMainWindow}{MainWindow}} : \textcolor{keyword}{public} QMainWindow}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     Q\_OBJECT}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \textcolor{keyword}{explicit} \mbox{\hyperlink{classMainWindow}{MainWindow}}(QWidget *parent = 0);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classMainWindow}{\string~MainWindow}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     QGraphicsScene * scene1;}
+\DoxyCodeLine{23     QGraphicsScene * scene2;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     QGraphicsView * view;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     QGraphicsScene* getScene1() \{\textcolor{keywordflow}{return} scene1;\}}
+\DoxyCodeLine{29     QGraphicsScene* getScene2() \{\textcolor{keywordflow}{return} scene2;\}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     QGraphicsView* getView() \{\textcolor{keywordflow}{return} view;\}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{private}:}
+\DoxyCodeLine{35     Ui::MainWindow *ui;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAINWINDOW\_H}}
+
+\end{DoxyCode}
