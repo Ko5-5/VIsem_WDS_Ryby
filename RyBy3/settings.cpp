@@ -10,11 +10,11 @@ Settings::Settings()
     menuTab = new QTabWidget();
 
     volumeLabel = new QLabel();
-    volumeLabel->setText("Głośność");
+    volumeLabel->setText(tr("Głośność"));
     volumeLabel->setAlignment(Qt::AlignCenter);
 
     brightnessLabel = new QLabel();
-    brightnessLabel->setText("Jasność");
+    brightnessLabel->setText(tr("Jasność"));
     brightnessLabel->setAlignment(Qt::AlignCenter);
 
 
@@ -34,11 +34,11 @@ Settings::Settings()
 
 
     invertedXAxisConCbox = new QCheckBox();
-    invertedXAxisConCbox->setText("Inverted X Axis of controler");
+    invertedXAxisConCbox->setText(tr("Inverted X Axis of controler"));
     connect(invertedXAxisConCbox, SIGNAL(clicked(bool)), this, SLOT(setIsXAxisInverted()));
 
     invertedYAxisConCbox = new QCheckBox();
-    invertedYAxisConCbox->setText("Inverted Y Axis of controler");
+    invertedYAxisConCbox->setText(tr("Inverted Y Axis of controler"));
     connect(invertedYAxisConCbox, SIGNAL(clicked(bool)), this, SLOT(setIsYAxisInverted()));
 
 
@@ -57,9 +57,9 @@ Settings::Settings()
     page2->setLayout(controlsLayout);
     page3->setLayout(graphicsLayout);
 
-    menuTab->addTab(page1, "Dźwięk");
-    menuTab->addTab(page2, "Sterowanie");
-    menuTab->addTab(page3, "Grafika");
+    menuTab->addTab(page1, tr("Dźwięk"));
+    menuTab->addTab(page2, tr("Sterowanie"));
+    menuTab->addTab(page3, tr("Grafika"));
     menuTab->setMinimumSize(300,100);
 }
 

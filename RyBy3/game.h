@@ -12,6 +12,8 @@
 #include <QBrush>
 #include <QPixmap>
 #include <QPainter>
+#include <QTranslator>
+#include <QMainWindow>
 #include "settings.h"
 #include "key_press_event_filter.h"
 
@@ -36,6 +38,12 @@ public:
      */
     Game(QWidget * parent = 0);
     virtual ~Game() {};
+
+    /*!
+     * \brief Wskaźnik na obiekt translatora
+     *
+     */
+    QTranslator * gameTranslator;
 
     /*!
      * \brief Wskaźnik na scenę frontową

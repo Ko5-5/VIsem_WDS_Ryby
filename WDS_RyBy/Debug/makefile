@@ -50,8 +50,8 @@ WDS_RyBy.bin \
 all: WDS_RyBy.elf secondary-outputs
 
 # Tool invocations
-WDS_RyBy.elf: $(OBJS) $(USER_OBJS) /Users/michalkos/Documents/GitHub/VIsem_WDS_Ryby/WDS_RyBy/STM32F411CEUX_FLASH.ld
-	arm-none-eabi-gcc -o "WDS_RyBy.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/michalkos/Documents/GitHub/VIsem_WDS_Ryby/WDS_RyBy/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="WDS_RyBy.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+WDS_RyBy.elf: $(OBJS) $(USER_OBJS) /home/hubert/Wedka/VIsem_WDS_Ryby/WDS_RyBy/STM32F411CEUX_FLASH.ld
+	arm-none-eabi-gcc -o "WDS_RyBy.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/hubert/Wedka/VIsem_WDS_Ryby/WDS_RyBy/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="WDS_RyBy.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

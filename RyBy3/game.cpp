@@ -3,6 +3,10 @@
 
 Game::Game(QWidget *parent)
 {
+    gameTranslator = new QTranslator();
+   // gameTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::TranslationsPath);
+
+
     KeyPressEventFilter * filter = new KeyPressEventFilter(this);
     this->installEventFilter(filter);
     menuScene = new QGraphicsScene();
@@ -30,22 +34,22 @@ Game::Game(QWidget *parent)
     titleLabel->setAttribute(Qt::WA_TranslucentBackground);
 
     startGameButton = new QPushButton();
-    startGameButton->setText("Start");
+    startGameButton->setText(tr("Start"));
     connect(startGameButton, SIGNAL(clicked(bool)), this, SLOT(setGameScene()));
 
     settingsButton = new QPushButton();
-    settingsButton->setText("Ustawienia");
+    settingsButton->setText(tr("Ustawienia"));
     connect(settingsButton, SIGNAL(clicked(bool)), this, SLOT(setMenuScene()));
 
 
     backToFrontButton = new QPushButton();
-    backToFrontButton->setText("Powrót");
+    backToFrontButton->setText(tr("Powrót"));
     backToFrontButton->setMaximumWidth(50);
     connect(backToFrontButton, SIGNAL(clicked(bool)), this, SLOT(setFrontScene()));
 
 
     exitButton = new QPushButton();
-    exitButton->setText("Wyjdź");
+    exitButton->setText(tr("Wyjdź"));
     connect(exitButton, SIGNAL(clicked(bool)), this, SLOT(close()));
 
     this->setScene(frontScene);
