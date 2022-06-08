@@ -76,6 +76,9 @@ volatile int16_t count = 0;
 
 //---- USB Vitural COM ----
 uint8_t DataToSend[40]; // Tablica zawierajaca dane do wyslania
+uint8_t DataToRead[64]; // Tablica zawierajaca dane do wyslania
+
+
 uint8_t MessageCounter = 0; // Licznik wyslanych wiadomosci
 uint8_t MessageLength = 0; // Zawiera dlugosc wysylanej wiadomosci
 //----
@@ -166,7 +169,10 @@ int main(void)
 		przyciski[0] = 0;
 		przyciski[1] = 0;
 		JoyBut = 0;
-		//HAL_GPIO_TogglePin(VIBROMOTOR_GPIO_Port, VIBROMOTOR_Pin);
+	    if(DataToRead[0] == 'e')
+	    	HAL_GPIO_WritePin(VIBROMOTOR_GPIO_Port, VIBROMOTOR_Pin, 1);
+	    else if(DataToRead == "j")
+	    	HAL_GPIO_WritePin(VIBROMOTOR_GPIO_Port, VIBROMOTOR_Pin, 0);
 		HAL_Delay(1000);
     /* USER CODE END WHILE */
 

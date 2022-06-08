@@ -111,6 +111,45 @@ Game::Game(QWidget *parent)
     frontScene->addItem(frontForm);
     menuScene->addItem(menuForm);
     gameScene->addItem(gameForm);
+
+    gameSerial = new QSerialPort(this);
+    qDebug() << "Number of ports: " << QSerialPortInfo::availablePorts().length() << endl;
+    foreach (const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts()) {
+        qDebug() << "Description: " << serialPortInfo.description() << endl;
+        qDebug() << "Has vendor id: " << serialPortInfo.hasVendorIdentifier() << endl;
+        qDebug() << "Vendor id: " << serialPortInfo.vendorIdentifier() << endl;
+    }
+    bool isSerialAvailable = false;
+    QString portName;
+
+    foreach (const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts()) {
+        isSerialAvailable = true;
+        portName = serialPortInfo.portName();
+    }
+
+    if(isSerialAvailable)
+    {
+        qDebug() << "Found the serial port" << endl;
+        gameSerial->setPortName(portName);
+        gameSerial->open(QSerialPort::ReadOnly);
+        gameSerial->setBaudRate(QSerialPort::Baud57600);
+        gameSerial->setDataBits(QSerialPort::Data8);
+        gameSerial->setFlowControl(QSerialPort::NoFlowControl);
+        gameSerial->setParity(QSerialPort::NoParity);
+        gameSerial->setStopBits(QSerialPort::OneStop);
+        QObject::connect(gameSerial, SIGNAL(readyRead()), this, SLOT(readSerial()));
+    }else
+    {
+        qDebug() << "Couldnt find the port" << endl;
+
+
+    }
+}
+
+Game::~Game()
+{
+    if(gameSerial->isOpen())
+        gameSerial->close();
 }
 
 void Game::drawBackground(QPainter *painter, const QRectF &rect)
@@ -135,4 +174,9 @@ void Game::setMenuScene()
 void Game::setGameScene()
 {
     this->setScene(gameScene);
+}
+
+void Game::readSerial()
+{
+    qDebug() << "Serial port read" << endl;
 }

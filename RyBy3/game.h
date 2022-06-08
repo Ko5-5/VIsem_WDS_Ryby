@@ -13,7 +13,9 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QTranslator>
-#include <QMainWindow>
+#include <QDebug>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 #include "settings.h"
 #include "key_press_event_filter.h"
 
@@ -37,7 +39,12 @@ public:
      * i wyświetla je.
      */
     Game(QWidget * parent = 0);
-    virtual ~Game() {};
+    ~Game();
+
+    /*!
+     * \brief Wskaźnik na obiekt obsługujący komunikację przez serial port
+     */
+    QSerialPort * gameSerial;
 
     /*!
      * \brief Wskaźnik na obiekt translatora
@@ -143,6 +150,11 @@ public slots:
      */
     void setGameScene();
     // SLot update Signal resize
+
+    /*!
+     * \brief Slot gry, pozwalający na czytanie z serial port
+     */
+    void readSerial();
 };
 
 #endif // GAME_H
