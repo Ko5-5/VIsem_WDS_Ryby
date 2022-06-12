@@ -16,15 +16,10 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    QTranslator gTranslator;
-    gTranslator.load(":/english.qm");
-    a.installTranslator(&gTranslator);
+    //gTranslator.load(":/english.qm");
+    //a.installTranslator(&gTranslator);
 
-    game = new Game();
-    //game->gameTranslator->load(":/english.qm");
-
-    //a.installTranslator(game->gameTranslator);
-
+    game = new Game(&a);
     game->show();
 
 

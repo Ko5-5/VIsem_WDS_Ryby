@@ -1,11 +1,12 @@
 #include "game.h"
 
 
-Game::Game(QWidget *parent)
+Game::Game(QApplication *a, QWidget *parent)
 {
-    gameTranslator = new QTranslator();
-   // gameTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::TranslationsPath);
+    this->setCacheMode(QGraphicsView::CacheBackground);
+    appPointer = a;
 
+    gameTranslator = new QTranslator();
 
     KeyPressEventFilter * filter = new KeyPressEventFilter(this);
     this->installEventFilter(filter);
@@ -21,8 +22,17 @@ Game::Game(QWidget *parent)
     palmaFishing = new QImage(":/images/palmaFishing.png");
     lawaFishing = new QImage(":/images/lawaFishing.png");
 
+
     settings = new Settings();
 
+    scoreLabel = new QLabel();
+    QFont temp1 = scoreLabel->font();
+    temp1.setPointSize(40);
+    scoreLabel->setFont(temp1);
+    scoreLabel->setText("Score: " + QString::number(settings->score));
+
+    QGraphicsProxyWidget* proxyScoreLabel = new QGraphicsProxyWidget();
+    proxyScoreLabel->setWidget(scoreLabel);
 
     titleLabel = new QLabel();
     titleLabel->setText("RyBy");
@@ -96,7 +106,7 @@ Game::Game(QWidget *parent)
     menuGrid->setAlignment(proxyButtonBackToMenu, Qt::AlignCenter);
 
     QGraphicsGridLayout *gameGrid = new QGraphicsGridLayout;
-
+    gameGrid->addItem(proxyScoreLabel, 0,0);
 
     QGraphicsWidget * menuForm = new QGraphicsWidget;
     menuForm->setLayout(menuGrid);
@@ -106,6 +116,9 @@ Game::Game(QWidget *parent)
 
     QGraphicsWidget * gameForm = new QGraphicsWidget;
     gameForm->setLayout(gameGrid);
+
+    connect(settings->polishButton, SIGNAL(clicked(bool)), this, SLOT(retranslateGame()));
+    connect(settings->englishButton, SIGNAL(clicked(bool)), this, SLOT(translateGame()));
 
 
     frontScene->addItem(frontForm);
@@ -141,15 +154,41 @@ Game::Game(QWidget *parent)
     }else
     {
         qDebug() << "Couldnt find the port" << endl;
-
-
     }
+
 }
 
 Game::~Game()
 {
     if(gameSerial->isOpen())
         gameSerial->close();
+}
+
+void Game::setText()
+{
+    startGameButton->setText(tr("Start"));
+    settingsButton->setText(tr("Ustawienia"));
+    backToFrontButton->setText(tr("Powrót"));
+    exitButton->setText(tr("Wyjdź"));
+}
+
+void Game::updateText()
+{
+    settings->score++;
+    scoreLabel->setText("Score: " + QString::number(settings->score));
+
+}
+
+void Game::translateGame()
+{
+    gameTranslator->load(":/english.qm");
+    qApp->installTranslator(gameTranslator);
+
+}
+
+void Game::retranslateGame()
+{
+    qApp->removeTranslator(gameTranslator);
 }
 
 void Game::drawBackground(QPainter *painter, const QRectF &rect)
@@ -159,11 +198,21 @@ void Game::drawBackground(QPainter *painter, const QRectF &rect)
     painter->restore();
 }
 
+void Game::changeEvent(QEvent *event)
+{
+    if(event->type() == QEvent::LanguageChange)
+    {
+        this->setText();
+        settings->setText();
+    }
+}
+
 
 
 void Game::setFrontScene()
 {
     this->setScene(frontScene);
+    this->resetCachedContent();
 }
 
 void Game::setMenuScene()
@@ -173,6 +222,8 @@ void Game::setMenuScene()
 
 void Game::setGameScene()
 {
+    this->show();
+    this->currentSceneImage = this->casualFishing;
     this->setScene(gameScene);
 }
 

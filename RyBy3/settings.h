@@ -16,6 +16,8 @@ class Settings : public QTabWidget
     QWidget * page1;
     QWidget * page2;
     QWidget * page3;
+    QWidget * page4;
+
 
     QLabel * volumeLabel;
     QLabel * brightnessLabel;
@@ -23,6 +25,8 @@ class Settings : public QTabWidget
     QGridLayout * soundLayout;
     QGridLayout * controlsLayout;
     QGridLayout * graphicsLayout;
+    QGridLayout * languageLayout;
+
 
     QSlider * volumeSlider;
 
@@ -31,16 +35,27 @@ class Settings : public QTabWidget
     QCheckBox * invertedXAxisConCbox;
     QCheckBox * invertedYAxisConCbox;
 
+
+
     bool isXAxisInverted;
     bool isYAxisInverted;
 
     int brightness;
     int volume;
 
+
 public:
     QTabWidget * menuTab;
 
     Settings();
+
+    void setText();
+
+    int score;
+
+    QPushButton * polishButton;
+    QPushButton * englishButton;
+
 
 public slots:
     void setVolume();

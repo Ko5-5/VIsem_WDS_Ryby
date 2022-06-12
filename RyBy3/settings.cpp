@@ -6,6 +6,9 @@ Settings::Settings()
     page1 = new QWidget();
     page2 = new QWidget();
     page3 = new QWidget();
+    page4 = new QWidget();
+
+    score = 0;
 
     menuTab = new QTabWidget();
 
@@ -32,13 +35,22 @@ Settings::Settings()
     brightnessSlider->setOrientation(Qt::Horizontal);
     connect(brightnessSlider, SIGNAL(valueChanged(int)), this, SLOT(setBrightness()));
 
+    polishButton = new QPushButton();
+    englishButton = new QPushButton();
+
+    polishButton->setText("Polski");
+    englishButton->setText("English");
+
+    languageLayout = new QGridLayout();
+    languageLayout->addWidget(polishButton);
+    languageLayout->addWidget(englishButton);
 
     invertedXAxisConCbox = new QCheckBox();
-    invertedXAxisConCbox->setText(tr("Inverted X Axis of controler"));
+    invertedXAxisConCbox->setText(tr("Odwrócona oś X kontrolera"));
     connect(invertedXAxisConCbox, SIGNAL(clicked(bool)), this, SLOT(setIsXAxisInverted()));
 
     invertedYAxisConCbox = new QCheckBox();
-    invertedYAxisConCbox->setText(tr("Inverted Y Axis of controler"));
+    invertedYAxisConCbox->setText(tr("Odwrócona oś Y kontrolera"));
     connect(invertedYAxisConCbox, SIGNAL(clicked(bool)), this, SLOT(setIsYAxisInverted()));
 
 
@@ -56,11 +68,26 @@ Settings::Settings()
     page1->setLayout(soundLayout);
     page2->setLayout(controlsLayout);
     page3->setLayout(graphicsLayout);
+    page4->setLayout(languageLayout);
 
     menuTab->addTab(page1, tr("Dźwięk"));
     menuTab->addTab(page2, tr("Sterowanie"));
     menuTab->addTab(page3, tr("Grafika"));
-    menuTab->setMinimumSize(300,100);
+    menuTab->addTab(page4, tr("Język"));
+    menuTab->setMinimumSize(330,100);
+}
+
+void Settings::setText()
+{
+    volumeLabel->setText(tr("Głośność"));
+    brightnessLabel->setText(tr("Jasność"));
+    invertedXAxisConCbox->setText(tr("Odwrócona oś X kontrolera"));
+    invertedYAxisConCbox->setText(tr("Odwrócona oś Y kontrolera"));
+    menuTab->addTab(page1, tr("Dźwięk"));
+    menuTab->addTab(page2, tr("Sterowanie"));
+    menuTab->addTab(page3, tr("Grafika"));
+    menuTab->addTab(page4, tr("Język"));
+
 }
 
 void Settings::setVolume()

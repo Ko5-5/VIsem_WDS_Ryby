@@ -46,12 +46,14 @@
     </message>
     <message>
         <location filename="settings.cpp" line="37"/>
-        <source>Inverted X Axis of controler</source>
+        <source>Odwrócona oś X kontrolera</source>
+        <oldsource>Inverted X Axis of controler</oldsource>
         <translation>Inverted X Axis of controlerr</translation>
     </message>
     <message>
         <location filename="settings.cpp" line="41"/>
-        <source>Inverted Y Axis of controler</source>
+        <source>Odwrócona oś Y kontrolera</source>
+        <oldsource>Inverted Y Axis of controler</oldsource>
         <translation>Inverted Y Axis of controlerr</translation>
     </message>
     <message>

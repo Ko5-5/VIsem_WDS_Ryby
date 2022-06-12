@@ -1,8 +1,10 @@
 #include "key_press_event_filter.h"
 #include <QDebug>
 #include "game.h"
+#include "settings.h"
 
 extern Game * game;
+extern Settings * settings;
 
 KeyPressEventFilter::KeyPressEventFilter(QObject *parent)
     : QObject(parent)
@@ -22,12 +24,14 @@ bool KeyPressEventFilter::eventFilter(QObject *watched, QEvent *event)
         qDebug() << "Key 1 pressed";
         //game->currentSceneImage->swap(*(game->casualFishing));
         game->currentSceneImage = game->casualFishing;
+        game->resetCachedContent();
         game->show();
     break;
     case Qt::Key_2:
         qDebug() << "Key 2 pressed";
         //game->currentSceneImage->swap(*(game->szarlotkaFishing));
         game->currentSceneImage = game->szarlotkaFishing;
+        game->resetCachedContent();
 
         game->show();
     break;
@@ -35,6 +39,7 @@ bool KeyPressEventFilter::eventFilter(QObject *watched, QEvent *event)
         qDebug() << "Key 3 pressed";
         //game->currentSceneImage->swap(*(game->palmaFishing));
         game->currentSceneImage = game->palmaFishing;
+        game->resetCachedContent();
 
         game->show();
 
@@ -44,12 +49,23 @@ bool KeyPressEventFilter::eventFilter(QObject *watched, QEvent *event)
         //game->currentSceneImage->swap(*(game->lawaFishing));
 
         game->currentSceneImage = game->lawaFishing;
+        game->resetCachedContent();
 
         game->show();
-
-
-
     break;
+
+    case Qt::Key_5:
+        game->translateGame();
+        break;
+
+    case Qt::Key_6:
+        game->retranslateGame();
+        break;
+    case Qt::Key_Up:
+        if(game->scene() == game->gameScene)
+            game->updateText();
+
+        break;
     default:
     qDebug() << "Invalid key pressed";
     break;

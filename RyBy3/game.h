@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include <QGraphicsView>
+#include <QEvent>
 #include <QObject>
 #include <QWidget>
 #include <QGraphicsScene>
@@ -16,6 +17,9 @@
 #include <QDebug>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+#include <QApplication>
+#include <QQmlEngine>
+#include <QQmlContext>
 #include "settings.h"
 #include "key_press_event_filter.h"
 
@@ -38,7 +42,7 @@ public:
      *  Tworzy instancje wszystkich obiektów znajdujących się na ekranie
      * i wyświetla je.
      */
-    Game(QWidget * parent = 0);
+    Game(QApplication *a, QWidget * parent = 0);
     ~Game();
 
     /*!
@@ -51,6 +55,11 @@ public:
      *
      */
     QTranslator * gameTranslator;
+
+    /*!
+     * \brief Wskaźnik na aplikację główną
+     */
+    QApplication * appPointer;
 
     /*!
      * \brief Wskaźnik na scenę frontową
@@ -81,6 +90,9 @@ public:
      * \brief Wskaźnik na przycisk wyjścia z gry
      */
     QPushButton * exitButton;
+
+
+
 
     /*!
      * \brief Wskaźnik na tytuł gry
@@ -120,6 +132,14 @@ public:
      */
     QImage * lawaFishing;
 
+    QLabel * scoreLabel;
+
+    void setText();
+
+    void updateText();
+
+
+
     /*!
      * \brief drawBackground
      * \param painter
@@ -128,6 +148,8 @@ public:
      * Reimplementacja funkcji służącej do rysowania tła, w celu dostosowania jej do tej gry
      */
     void drawBackground(QPainter *painter, const QRectF &rect) override;
+
+    void changeEvent(QEvent* event) override;
 public slots:
     /*!
      * \brief setFrontScene
@@ -155,6 +177,10 @@ public slots:
      * \brief Slot gry, pozwalający na czytanie z serial port
      */
     void readSerial();
+
+    void translateGame();
+
+    void retranslateGame();
 };
 
 #endif // GAME_H
