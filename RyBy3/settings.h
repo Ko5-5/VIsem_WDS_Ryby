@@ -8,6 +8,9 @@
 #include <QCheckBox>
 #include <QString>
 #include <QLabel>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+
 
 class Settings : public QTabWidget
 {
@@ -42,6 +45,7 @@ class Settings : public QTabWidget
 
     int brightness;
     int volume;
+    QMediaPlayer * mediaPlayer;
 
 
 public:

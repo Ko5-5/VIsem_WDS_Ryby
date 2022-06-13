@@ -27,6 +27,7 @@ Settings::Settings()
 
     volumeSlider = new QSlider();
     volumeSlider->setRange(0,100);
+    volumeSlider->setValue(20);
     volumeSlider->setOrientation(Qt::Horizontal);
     connect(volumeSlider, SIGNAL(valueChanged(int)), this, SLOT(setVolume()));
 
@@ -75,6 +76,11 @@ Settings::Settings()
     menuTab->addTab(page3, tr("Grafika"));
     menuTab->addTab(page4, tr("Język"));
     menuTab->setMinimumSize(330,100);
+
+    mediaPlayer = new QMediaPlayer();
+    mediaPlayer->setMedia(QUrl("qrc:/music/rain_music.mp3"));
+    mediaPlayer->setVolume(20);
+    mediaPlayer->play();
 }
 
 void Settings::setText()
@@ -93,6 +99,7 @@ void Settings::setText()
 void Settings::setVolume()
 {
     volume = volumeSlider->value();
+    mediaPlayer->setVolume(volume);
     //volumeLabel->setText(QString::number(volume));
 }
 

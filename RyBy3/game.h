@@ -15,13 +15,11 @@
 #include <QPainter>
 #include <QTranslator>
 #include <QDebug>
-#include <QMediaPlayer>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QApplication>
 #include <QQmlEngine>
 #include <QQmlContext>
-#include <QMediaPlaylist>
 #include "settings.h"
 #include "key_press_event_filter.h"
 #include "bait.h"
@@ -60,7 +58,6 @@ public:
      */
     QTranslator * gameTranslator;
 
-    QMediaPlayer * mediaPlayer;
     /*!
      * \brief Wskaźnik na aplikację główną
      */

@@ -6,10 +6,7 @@ Game::Game(QApplication *a, QWidget *parent)
     this->setCacheMode(QGraphicsView::CacheBackground);
     appPointer = a;
 
-    mediaPlayer = new QMediaPlayer();
-    mediaPlayer->setMedia(QUrl("qrc:/music/rain_music.mp3"));
-    mediaPlayer->setVolume(20);
-    mediaPlayer->play();
+
 
     gameTranslator = new QTranslator();
 
