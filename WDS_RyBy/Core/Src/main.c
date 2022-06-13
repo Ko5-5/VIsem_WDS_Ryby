@@ -173,7 +173,7 @@ int main(void)
 	    	HAL_GPIO_WritePin(VIBROMOTOR_GPIO_Port, VIBROMOTOR_Pin, 1);
 	    else if(DataToRead == "j")
 	    	HAL_GPIO_WritePin(VIBROMOTOR_GPIO_Port, VIBROMOTOR_Pin, 0);
-		HAL_Delay(1000);
+		HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -17,6 +17,7 @@ void Bait::fishCaught()
         game->caughtLabel->setVisible(true);
         isFishCaught = true;
         tim1->stop();
+        game->retrievalTim->singleShot(3000, game, SLOT(startRetrievalTim()));
     }
 }
 
@@ -31,6 +32,7 @@ void Bait::fishedOut()
 void Bait::castRod()
 {
     isCasted = true;
-    tim1->start(8000);
+    int randomTime = qrand() % 8000 + 8000;
+    tim1->start(randomTime);
     game->castedLabel->setVisible(true);
 }

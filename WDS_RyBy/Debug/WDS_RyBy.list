@@ -2317,12 +2317,12 @@ int main(void)
  80015ca:	f44f 4180 	mov.w	r1, #16384	; 0x4000
  80015ce:	480a      	ldr	r0, [pc, #40]	; (80015f8 <main+0x2b8>)
  80015d0:	f002 f966 	bl	80038a0 <HAL_GPIO_WritePin>
-		HAL_Delay(1000);
- 80015d4:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 80015d8:	f000 fee2 	bl	80023a0 <HAL_Delay>
+		HAL_Delay(200);
+ 80015d4:	20c8      	movs	r0, #200	; 0xc8
+ 80015d6:	f000 fee3 	bl	80023a0 <HAL_Delay>
 	{
- 80015dc:	e6da      	b.n	8001394 <main+0x54>
- 80015de:	bf00      	nop
+ 80015da:	e6db      	b.n	8001394 <main+0x54>
+ 80015dc:	f3af 8000 	nop.w
  80015e0:	47ae147b 	.word	0x47ae147b
  80015e4:	40447ae1 	.word	0x40447ae1
  80015e8:	20000378 	.word	0x20000378

@@ -7,6 +7,7 @@
 #include <QGraphicsGridLayout>
 #include <QGraphicsWidget>
 #include <QTranslator>
+#include <QTime>
 #include "game.h"
 
 
@@ -16,6 +17,9 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
+
+    qsrand(QTime::currentTime().msec());
+
     //gTranslator.load(":/english.qm");
     //a.installTranslator(&gTranslator);
 

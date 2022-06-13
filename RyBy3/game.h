@@ -20,6 +20,10 @@
 #include <QApplication>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QByteArray>
+#include <QStringList>
+#include <QtMath>
+#include <QTimer>
 #include "settings.h"
 #include "key_press_event_filter.h"
 #include "bait.h"
@@ -141,6 +145,27 @@ public:
 
     Bait * bait;
 
+    QString serialBuffer;
+
+    QByteArray serialData;
+
+    QStringList serialList;
+
+    QKeyEvent * keyPressLeft;
+
+    QKeyEvent * keyPressUp;
+
+
+    QTimer * waitTim;
+
+    QTimer * retrievalTim;
+
+    bool serialWait;
+
+    int beforeSpins;
+
+    int currentSpins;
+
     void setText();
 
     void updateText();
@@ -188,6 +213,10 @@ public slots:
     void translateGame();
 
     void retranslateGame();
+
+    void startWaitTim();
+
+    void startRetrievalTim();
 };
 
 #endif // GAME_H

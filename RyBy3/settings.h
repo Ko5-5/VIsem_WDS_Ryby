@@ -46,6 +46,7 @@ class Settings : public QTabWidget
     int brightness;
     int volume;
     QMediaPlayer * mediaPlayer;
+    QMediaPlaylist * mediaPlaylist;
 
 
 public:

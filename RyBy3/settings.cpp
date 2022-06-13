@@ -77,11 +77,18 @@ Settings::Settings()
     menuTab->addTab(page4, tr("Język"));
     menuTab->setMinimumSize(330,100);
 
+    mediaPlaylist = new QMediaPlaylist();
+    mediaPlaylist->addMedia(QUrl("qrc:/music/rain_music.mp3"));
+    mediaPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+
     mediaPlayer = new QMediaPlayer();
-    mediaPlayer->setMedia(QUrl("qrc:/music/rain_music.mp3"));
+    mediaPlayer->setPlaylist(mediaPlaylist);
     mediaPlayer->setVolume(20);
     mediaPlayer->play();
 }
+
+
+
 
 void Settings::setText()
 {

@@ -166,6 +166,13 @@ Game::Game(QApplication *a, QWidget *parent)
     menuScene->addItem(menuForm);
     gameScene->addItem(gameForm);
 
+    keyPressLeft = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
+    keyPressUp = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+
+
+    serialWait = false;
+    waitTim = new QTimer();
+    retrievalTim = new QTimer();
 
     gameSerial = new QSerialPort(this);
     qDebug() << "Number of ports: " << QSerialPortInfo::availablePorts().length() << endl;
@@ -193,6 +200,7 @@ Game::Game(QApplication *a, QWidget *parent)
         gameSerial->setParity(QSerialPort::NoParity);
         gameSerial->setStopBits(QSerialPort::OneStop);
         QObject::connect(gameSerial, SIGNAL(readyRead()), this, SLOT(readSerial()));
+
     }else
     {
         qDebug() << "Couldnt find the port" << endl;
@@ -236,6 +244,27 @@ void Game::retranslateGame()
     qApp->removeTranslator(gameTranslator);
 }
 
+void Game::startWaitTim()
+{
+    serialWait = false;
+}
+
+void Game::startRetrievalTim()
+{
+    currentSpins = QString(serialList.at(12)).toInt();
+    if(qFabs(currentSpins - beforeSpins) > 100)
+    {
+        qApp->sendEvent(this, keyPressUp);
+        qDebug() << "Ryba złowiona" << endl;
+
+    }else
+    {
+        qDebug() << "Ryba uciekła" << endl;
+        bait->fishedOut();
+    }
+
+}
+
 void Game::drawBackground(QPainter *painter, const QRectF &rect)
 {
     painter->save();
@@ -275,5 +304,27 @@ void Game::setGameScene()
 
 void Game::readSerial()
 {
-    qDebug() << "Serial port read" << endl;
+    //qDebug() << "Serial port read" << endl;
+    serialData = gameSerial->readAll();
+    serialBuffer = QString::fromStdString(serialData.toStdString());
+    serialList = serialBuffer.split(" ");
+
+    //qDebug() << "Serial data: " << serialBuffer;
+
+    qDebug() << serialList << endl;
+   //qDebug() << QString(serialList.at(12));
+        //qDebug() << serialList;
+
+    qDebug() << endl;
+
+
+    if((serialList.at(5).toInt() > 200) && !serialWait)
+    {
+        beforeSpins = QString(serialList.at(12)).toInt();
+        qDebug() << "Gyr over 200" << endl;
+        qApp->sendEvent(this, keyPressLeft);
+        serialWait = true;
+        waitTim->singleShot(2000, this, SLOT(startWaitTim()));
+    }
+
 }
