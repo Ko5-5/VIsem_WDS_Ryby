@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport qml quick
+QT       += core gui serialport qml quick multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,16 +28,19 @@ SOURCES += \
         main.cpp \
     game.cpp \
     settings.cpp \
-    key_press_event_filter.cpp
+    key_press_event_filter.cpp \
+    bait.cpp
 
 HEADERS += \
     game.h \
     settings.h \
-    key_press_event_filter.h
+    key_press_event_filter.h \
+    bait.h
 
 FORMS += \
         mainwindow.ui
 
 RESOURCES += \
     rsc.qrc \
-    translations.qrc
+    translations.qrc \
+    music.qrc

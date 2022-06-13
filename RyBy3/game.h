@@ -15,13 +15,16 @@
 #include <QPainter>
 #include <QTranslator>
 #include <QDebug>
+#include <QMediaPlayer>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QApplication>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QMediaPlaylist>
 #include "settings.h"
 #include "key_press_event_filter.h"
+#include "bait.h"
 
 /*!
  * \brief The Game class
@@ -31,6 +34,7 @@
  * a także przechowuje wskaźniki do tych elementów.
  */
 
+class Bait;
 
 class Game : public QGraphicsView
 {
@@ -56,6 +60,7 @@ public:
      */
     QTranslator * gameTranslator;
 
+    QMediaPlayer * mediaPlayer;
     /*!
      * \brief Wskaźnik na aplikację główną
      */
@@ -90,7 +95,6 @@ public:
      * \brief Wskaźnik na przycisk wyjścia z gry
      */
     QPushButton * exitButton;
-
 
 
 
@@ -133,6 +137,12 @@ public:
     QImage * lawaFishing;
 
     QLabel * scoreLabel;
+
+    QLabel * caughtLabel;
+
+    QLabel * castedLabel;
+
+    Bait * bait;
 
     void setText();
 

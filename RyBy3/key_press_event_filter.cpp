@@ -18,6 +18,7 @@ bool KeyPressEventFilter::eventFilter(QObject *watched, QEvent *event)
         return QObject::eventFilter(watched, event);
 
     QKeyEvent * keyEvent = static_cast<QKeyEvent*>(event);
+    if(game->scene() == game->gameScene){
     switch(keyEvent->key())
     {
     case Qt::Key_1:
@@ -64,11 +65,16 @@ bool KeyPressEventFilter::eventFilter(QObject *watched, QEvent *event)
     case Qt::Key_Up:
         if(game->scene() == game->gameScene)
             game->updateText();
-
+        break;
+    case Qt::Key_Left:
+        if(game->scene() == game->gameScene)
+            game->bait->castRod();
         break;
     default:
     qDebug() << "Invalid key pressed";
     break;
+    }
+
     }
     return true;
 }

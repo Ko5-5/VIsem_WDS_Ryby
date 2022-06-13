@@ -6,6 +6,11 @@ Game::Game(QApplication *a, QWidget *parent)
     this->setCacheMode(QGraphicsView::CacheBackground);
     appPointer = a;
 
+    mediaPlayer = new QMediaPlayer();
+    mediaPlayer->setMedia(QUrl("qrc:/music/rain_music.mp3"));
+    mediaPlayer->setVolume(20);
+    mediaPlayer->play();
+
     gameTranslator = new QTranslator();
 
     KeyPressEventFilter * filter = new KeyPressEventFilter(this);
@@ -30,9 +35,44 @@ Game::Game(QApplication *a, QWidget *parent)
     temp1.setPointSize(40);
     scoreLabel->setFont(temp1);
     scoreLabel->setText("Score: " + QString::number(settings->score));
+    scoreLabel->setStyleSheet("color: white");
+    scoreLabel->setAttribute(Qt::WA_TranslucentBackground);
+    scoreLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+    scoreLabel->setMinimumWidth(250);
 
+    caughtLabel = new QLabel();
+    QFont temp2 = caughtLabel->font();
+    temp2.setPointSize(40);
+    caughtLabel->setFont(temp2);
+    caughtLabel->setText("!!!");
+    caughtLabel->setStyleSheet("color: red");
+    caughtLabel->setAttribute(Qt::WA_TranslucentBackground);
+    caughtLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+    caughtLabel->setMinimumWidth(50);
+    caughtLabel->setVisible(false);
+
+    castedLabel = new QLabel();
+    QFont temp3 = castedLabel->font();
+    temp3.setPointSize(40);
+    castedLabel->setFont(temp3);
+    castedLabel->setText("!");
+    castedLabel->setStyleSheet("color: yellow");
+    castedLabel->setAttribute(Qt::WA_TranslucentBackground);
+    castedLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+    castedLabel->setMinimumWidth(20);
+    castedLabel->setVisible(false);
+
+    QGraphicsProxyWidget* proxyCastedLabel = new QGraphicsProxyWidget();
+    proxyCastedLabel->setWidget(castedLabel);
+
+    QGraphicsProxyWidget* proxyCaughtLabel = new QGraphicsProxyWidget();
+    proxyCaughtLabel->setWidget(caughtLabel);
+    proxyCaughtLabel->setGeometry({0,1035,proxyCaughtLabel->geometry().width(), proxyCaughtLabel->geometry().height()});
+\
     QGraphicsProxyWidget* proxyScoreLabel = new QGraphicsProxyWidget();
     proxyScoreLabel->setWidget(scoreLabel);
+    //Eureka!!!!!!!!!!
+    proxyScoreLabel->setGeometry({1605,1035,proxyScoreLabel->geometry().width(), proxyScoreLabel->geometry().height()});
 
     titleLabel = new QLabel();
     titleLabel->setText("RyBy");
@@ -106,7 +146,10 @@ Game::Game(QApplication *a, QWidget *parent)
     menuGrid->setAlignment(proxyButtonBackToMenu, Qt::AlignCenter);
 
     QGraphicsGridLayout *gameGrid = new QGraphicsGridLayout;
-    gameGrid->addItem(proxyScoreLabel, 0,0);
+    gameGrid->addItem(proxyScoreLabel, 0 ,0);
+    gameGrid->addItem(proxyCaughtLabel, 0, 1);
+    gameGrid->addItem(proxyCastedLabel, 0, 2);
+
 
     QGraphicsWidget * menuForm = new QGraphicsWidget;
     menuForm->setLayout(menuGrid);
@@ -117,6 +160,7 @@ Game::Game(QApplication *a, QWidget *parent)
     QGraphicsWidget * gameForm = new QGraphicsWidget;
     gameForm->setLayout(gameGrid);
 
+
     connect(settings->polishButton, SIGNAL(clicked(bool)), this, SLOT(retranslateGame()));
     connect(settings->englishButton, SIGNAL(clicked(bool)), this, SLOT(translateGame()));
 
@@ -124,6 +168,7 @@ Game::Game(QApplication *a, QWidget *parent)
     frontScene->addItem(frontForm);
     menuScene->addItem(menuForm);
     gameScene->addItem(gameForm);
+
 
     gameSerial = new QSerialPort(this);
     qDebug() << "Number of ports: " << QSerialPortInfo::availablePorts().length() << endl;
@@ -174,8 +219,12 @@ void Game::setText()
 
 void Game::updateText()
 {
+    if(bait->isFishCaught)
+    {
     settings->score++;
     scoreLabel->setText("Score: " + QString::number(settings->score));
+    bait->fishedOut();
+    }
 
 }
 
@@ -183,7 +232,6 @@ void Game::translateGame()
 {
     gameTranslator->load(":/english.qm");
     qApp->installTranslator(gameTranslator);
-
 }
 
 void Game::retranslateGame()
@@ -223,6 +271,7 @@ void Game::setMenuScene()
 void Game::setGameScene()
 {
     this->show();
+    bait = new Bait();
     this->currentSceneImage = this->casualFishing;
     this->setScene(gameScene);
 }
